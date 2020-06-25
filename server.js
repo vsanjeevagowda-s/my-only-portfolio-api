@@ -32,7 +32,7 @@ app.post("/api/send-mail", async (req, res) => {
     }
 
     const msg = {
-      to: "venkatesh.sv645@gmail.com",
+      to: process.env.TO_EMAIL_ADDRESS,
       from: req.body.email,
       subject: "My-Portfolio - Contact",
       text: req.body.message,
@@ -41,7 +41,7 @@ app.post("/api/send-mail", async (req, res) => {
     try {
       await sgMail.send(msg);
     } catch (error) {
-      debugger;
+      throw new Error('Failed to send message Please try after some time.');
     }
 
     res.json({ message: "Thank you for your message, will get back to you." });
