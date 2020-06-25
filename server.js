@@ -44,7 +44,7 @@ app.post("/api/send-mail", async (req, res) => {
       throw new Error('Failed to send message Please try after some time.');
     }
 
-    res.json({ message: "Thank you for your message, will get back to you." });
+    res.json({ message: "Thank you for your message. Lets discuss soon..." });
   } catch (error) {
     return res.status(400).json({
       message: error.message,
